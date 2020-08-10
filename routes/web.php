@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// http://127.0.0.1:8000/
+
 Route::get('/', function () {
+	// Blade Template Engine
+	// fileName.blade.php
     return view('welcome');
+});
+
+/*Route::get('/about', function(){
+	return view('about');
+});*/
+
+Route::get('/about', 'AboutController@about');
+
+Route::get('/sharmin', function(){
+	echo "It's sharmin's page.";
 });
