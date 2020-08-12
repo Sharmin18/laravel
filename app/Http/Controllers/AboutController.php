@@ -13,7 +13,12 @@ class AboutController extends Controller
     public function about()
     {
     	$numbers = range(1, 1000);
-    		
-    	return view('about')->with('numbers', $numbers);
+
+        $pageName = "It's all about page.";
+
+    	return view('about')->with([
+            'numbers' => $numbers,
+            'pageName' => $pageName
+        ]);
     }
 }
