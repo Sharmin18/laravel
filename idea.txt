@@ -1,0 +1,14 @@
+## Task Management
+- Task List
+	- Add / Edit / Delete 
+- Task Status
+- Task Filter
+
+## DB Design
+
+	tasks
+		- id
+		- title
+		- description
+		- status
+		
