@@ -8,6 +8,9 @@
 	
 	<h1>Task management</h1>
 
+	@include('tasks.partials.create-form')
+
+	<hr>
 	<ul>
 		@foreach($tasks as $task)
 			<li>
@@ -19,13 +22,7 @@
 				
 				 - added at {{ $task->created_at->diffForHumans() }}
 
-				<button>
-					@if($task->status)
-						Uncheck
-					@else
-						Mark done
-					@endif	
-				</button>
+				@include('tasks.partials.toggle')
 			</li>
 		@endforeach	
 	</ul>
