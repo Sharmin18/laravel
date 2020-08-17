@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function index()
     {
     	// Fetch all data from tasks table and then return to view
-    	$tasks = Task::orderBy('id', 'desc')->get();
+    	$tasks = Task::orderBy('id', 'desc')->paginate(10);
 
     	return view('tasks.index')
     		->with('tasks', $tasks);
@@ -61,5 +61,51 @@ class TaskController extends Controller
     	]);
 
     	return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $task = Task::findOrFail($id);
+
+        return view('tasks.edit')
+            ->with('task', $task);
+    }
+
+    public function update($id, Request $takeUserInput)
+    {
+        ## Approach 1
+        /*$task = Task::where('id', $id)->first();
+
+        if (! $task) {
+            return redirect()->back();
+        }
+
+        $task->update([
+            'title' => $takeUserInput->title,
+            'description' => $takeUserInput->description,
+        ]);*/
+
+        /*## Approach 2
+        $task = Task::find($id);
+
+        $task->update([
+            'title' => $takeUserInput->title,
+            'description' => $takeUserInput->description,
+        ]);*/
+
+        ## Approach 3
+        Task::where('id', $id)->update([
+            'title' => $takeUserInput->title,
+            'description' => $takeUserInput->description,
+        ]);
+
+        return redirect()->route('home');
+    }
+
+    public function destroy($id)
+    {
+        Task::findOrFail($id)->delete();
+
+        return redirect()->route('home');
     }
 }
