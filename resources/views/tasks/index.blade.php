@@ -13,7 +13,7 @@
 	<hr>
 	<ul>
 		@foreach($tasks as $task)
-			<li>
+			<li style="background: #FAFBFC; margin: 10px 0; padding: 10px 20px;">
 				@if($task->status)
 					<del>{{ $task->title }}</del>
 				@else
@@ -22,9 +22,17 @@
 				
 				 - added at {{ $task->created_at->diffForHumans() }}
 
+				@if(! $task->status)
+					<a href="/tasks/edit/{{ $task->id }}">Edit</a> |
+				@endif
+
+				<a href="/tasks/delete/{{ $task->id }}" style="color: red; padding-left: 30px; text-decoration: none;">Delete</a>
+
 				@include('tasks.partials.toggle')
 			</li>
 		@endforeach	
 	</ul>
+
+	{{ $tasks->links() }}	
 </body>
 </html>
