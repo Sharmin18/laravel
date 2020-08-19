@@ -3,6 +3,10 @@
 	- Add / Edit / Delete 
 - Task Status
 - Task Filter
+- Sign Up
+- Login
+- User can able to opearate their own task only.
+
 
 ## DB Design
 
