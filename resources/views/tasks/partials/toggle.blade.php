@@ -1,7 +1,7 @@
 <form action="/tasks/toggle/{{ $task->id }}" method="POST">
 	@csrf
 
-	<button type="submit">
+	<button type="submit" class="btn btn-info btn-sm">
 		@if($task->status)
 			Uncheck
 		@else
