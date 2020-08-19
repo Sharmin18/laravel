@@ -11,6 +11,20 @@
 	@include('tasks.partials.create-form')
 
 	<hr>
+
+	<div>
+		Filter by
+		<a href="/">All</a>
+		<a href="?sort=done">Done</a>
+		<a href="?sort=pending">Pending</a>
+	</div>
+
+	<div>
+		<form action="" method="GET">
+			<input type="text" value="{{ request()->keyword }}" placeholder="Search your task" name="keyword">
+		</form>
+	</div>
+	
 	<ul>
 		@foreach($tasks as $task)
 			<li style="background: #FAFBFC; margin: 10px 0; padding: 10px 20px;">

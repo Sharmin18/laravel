@@ -10,8 +10,23 @@ class TaskController extends Controller
 {
     public function index()
     {
-    	// Fetch all data from tasks table and then return to view
-    	$tasks = Task::orderBy('id', 'desc')->paginate(10);
+        $sort = request()->sort;
+
+        if ($sort == 'done') {
+            $tasks = Task::orderBy('id', 'desc')->where('status', 1)->paginate(10);    
+        } elseif($sort == 'pending'){
+            $tasks = Task::orderBy('id', 'desc')->where('status', 0)->paginate(10);    
+        } else {
+            // Fetch all data from tasks table and then return to view
+            $tasks = Task::orderBy('id', 'desc')->paginate(10);
+        }
+
+        $keyword = request()->keyword;
+
+        if ( $keyword != '') {
+            $tasks = Task::where('title', 'LIKE', "%$keyword%")
+                ->orderBy('id', 'desc')->paginate(10);   
+        }
 
     	return view('tasks.index')
     		->with('tasks', $tasks);
