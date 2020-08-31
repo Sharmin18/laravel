@@ -15,6 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->string('title');
             $table->text('description')->nullable();
             $table->tinyInteger('status')->default(0);
