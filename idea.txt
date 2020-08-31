@@ -12,7 +12,13 @@
 
 	tasks
 		- id
+		- user_id
 		- title
 		- description
 		- status
+
+	users
+		- id
+		- email
+		- password
 		

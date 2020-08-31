@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -57,6 +58,7 @@ class TaskController extends Controller
 
     	Task::create([
     		'title' => $takeUserInput->title,
+            'user_id' => Auth::user()->id,
     		'description' => $takeUserInput->description,
     	]);
 

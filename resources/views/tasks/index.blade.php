@@ -9,6 +9,13 @@
 <body>
 	
 	<div class="container">
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		    <div class="float-right">
+		    	Hello {{ Auth::user()->email }} | <a class="nav-link" href="{{ route('logout') }}" tabindex="-1" aria-disabled="true">LogOut</a>
+		    </div>
+		</nav>
+
 		<h1 class="py-4 text-primary">Task management</h1>
 
 		<div class="row">
